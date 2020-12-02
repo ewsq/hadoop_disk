@@ -17,7 +17,7 @@
         var data = [];
         var $=layui.jquery;
         $.ajax({
-            url: "/hadoop/fileAndFolder/treeload",    //后台数据请求地址
+            url: "../fileAndFolder/treeload",    //后台数据请求地址
             type: "post",
             datatype:"json",
             async: false,
@@ -50,7 +50,7 @@
                     confirmMess='确认移动到此文件夹';
                 layer.confirm(confirmMess, function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/copyormoveall",
+                        url: "../fileAndFolder/copyormoveall",
                         contentType: "application/json;charset=utf-8",
                         data:{"objects":JSON.stringify(parent_json),"altertype":altertype,"aimFolderid":item.id},
                         success: function (message) {

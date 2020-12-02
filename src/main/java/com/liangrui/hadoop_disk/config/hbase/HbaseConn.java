@@ -1,4 +1,4 @@
-package com.liangrui.hadoop_disk.config.hadoop.conn;
+package com.liangrui.hadoop_disk.config.hbase;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HBaseConfiguration;
@@ -16,8 +16,8 @@ public class HbaseConn {
     private HbaseConn(){
     	try {
     		configuration = HBaseConfiguration.create();
-        	configuration.set("hbase.zookeeper.quorum", "localhost");
-        	configuration.set("hbase.rootdir", "hdfs://localhost:9000/hbase");
+        	configuration.set("hbase.zookeeper.quorum", "hbslaver01,hbslaver02,hbslaver03");
+        	configuration.set("hbase.rootdir", "hdfs://hbmaster:9000/hbase");
         	connection = ConnectionFactory.createConnection(configuration);
         } catch (Exception e) {
             e.printStackTrace();

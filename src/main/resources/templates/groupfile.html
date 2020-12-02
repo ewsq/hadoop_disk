@@ -88,9 +88,9 @@
                 }
             }
             if (flag === 1) {
-                var originUrl = 'http://127.0.0.1:8000/hadoop/uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
+                var originUrl = '../uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
 
-                window.open('http://127.0.0.1:8012/onlinePreview?url=' + encodeURIComponent(originUrl));
+                window.open('../onlinePreview?url=' + encodeURIComponent(originUrl));
             } else {
                 layer.alert("该文件类型不允许预览");
             }
@@ -102,7 +102,7 @@
         fatherFolderid=folderid;
         var table=layui.table;
         table.reload('fileAndFolder',{
-            url:"/hadoop/groupfile/allFolder?fatherFolder="+ fatherFolderid
+            url:"../groupfile/allFolder?fatherFolder="+ fatherFolderid
         });
         guide.push(foldername);
         guideid.push(folderid);
@@ -124,7 +124,7 @@
     function selectbyuserid(username,userid) {
         var table=layui.table;
         table.reload('fileAndFolder',{
-            url:"/hadoop/groupfile/selectbyuserid?groupid="+ [[${groupid}]]+"&userid="+userid
+            url:"../groupfile/selectbyuserid?groupid="+ [[${groupid}]]+"&userid="+userid
         });
         var temp=-1;
         for(var i=0;i<guideid.length;i++)
@@ -168,12 +168,12 @@
         if(folder==1)
         {
             table.reload('fileAndFolder',{
-                url:"/hadoop/groupfile/searchbylikename?groupid="+ [[${groupid}]]+"&text="+foldername
+                url:"../groupfile/searchbylikename?groupid="+ [[${groupid}]]+"&text="+foldername
             });
         }else
         {
             table.reload('fileAndFolder',{
-                url:"/hadoop/groupfile/allFolder?fatherFolder="+ folder
+                url:"../groupfile/allFolder?fatherFolder="+ folder
             });
         }
 
@@ -197,7 +197,7 @@
             elem: '#demo'
             , id: 'fileAndFolder'
             , cellMinWidth: 80
-            , url: '/hadoop/groupfile/allFolder?fatherFolder=' + [[${fatherFolderid}]]
+            , url: '../groupfile/allFolder?fatherFolder=' + [[${fatherFolderid}]]
             , cols: [
                 [
                     {title: '选择', width: 36, type: 'checkbox', fixed: 'left'},
@@ -266,7 +266,7 @@
 
             let data = obj.data;
             if (obj.event === 'down') {
-                var url = "http://127.0.0.1:8000/hadoop/uploadAndDown/down?fileindexid=" + data.id;//下载文件url
+                var url = "../uploadAndDown/down?fileindexid=" + data.id;//下载文件url
                 $("#fileForm").attr('action', url);
 
                 $("#fileForm").submit();
@@ -274,7 +274,7 @@
             } else if (obj.event === 'del') {
                 $.ajax({
                     type: "POST",
-                    url: "/hadoop/groupfile/del?id=" + data.id+"&type="+data.type,
+                    url: "../groupfile/del?id=" + data.id+"&type="+data.type,
                     contentType: "application/json;charset=utf-8",
                     success: function (message) {
                         // 获得frame索引
@@ -298,7 +298,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
+                    content: "../fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
                 });
 
             }
@@ -326,7 +326,7 @@
                 //console.log(fatherFolderid+value);
                 $.ajax({
                     type: "POST",
-                    url: "/hadoop/groupfile/addFolder?filename=" + value + "&fatherFolderid="+fatherFolderid+"&groupid=[[${groupid}]]",
+                    url: "../groupfile/addFolder?filename=" + value + "&fatherFolderid="+fatherFolderid+"&groupid=[[${groupid}]]",
                     contentType: "application/json;charset=utf-8",
                     success: function (message) {
                         // 获得frame索引
@@ -357,7 +357,7 @@
             if (data.length > 0) {
                 layer.confirm('确认删除？', function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/delall",
+                        url: "../fileAndFolder/delall",
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {
@@ -393,7 +393,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
+                    content: "../fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
                 });
             } else {
                 layer.msg("请先选中！！", {
@@ -406,7 +406,7 @@
             var text = $("#seaarchtxt").val();
             console.log(text);
             table.reload('fileAndFolder',{
-                url:"/hadoop/groupfile/searchbylikename?groupid="+ [[${groupid}]]+"&text="+text
+                url:"../groupfile/searchbylikename?groupid="+ [[${groupid}]]+"&text="+text
             });
             var temp=-1;
             for(var i=0;i<guideid.length;i++)

@@ -198,7 +198,7 @@
                             <div style="font-size: 14px;color: #666;margin-top: 20px;">请返回登录</div>
                         </div>
                         <div style="text-align: center;margin-top: 50px;">
-                            <a href="/hadoop/index/login" class="layui-btn layui-btn-primary">登录</a>
+                            <a href="../index/login" class="layui-btn layui-btn-primary">登录</a>
                         </div>
                     </div>
                 </div>
@@ -214,7 +214,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: 'http://localhost:8000/hadoop/uploadAndDown/uploadImg'
+            ,url: '../uploadAndDown/uploadImg'
             ,accept:'images'
             ,size:500000
             ,before: function(obj){
@@ -278,7 +278,7 @@
 
             //alert(user);
             $.ajax({
-                url: '/hadoop/user/havename',
+                url: '../user/havename',
                 dataType: 'text',
                 data: {user: user},
                 //验证用户名是否可用
@@ -339,7 +339,7 @@
                 layer.msg('请输入正确的邮箱格式：<br>如：xxx@qq.com<br>xxx@163.com等格式');
             } else {
                 $.ajax({
-                    url: '/hadoop/user/haveemail',
+                    url: '../user/haveemail',
                     dataType: 'text',
                     data: {email: $(this).val()},
                     //验证用户名是否可用
@@ -393,7 +393,7 @@
             $.ajax({
                 type: "POST",
 
-                url: "/hadoop/user/register",
+                url: "../user/register",
 
                 data: formdata,
 

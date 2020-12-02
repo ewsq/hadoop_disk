@@ -53,7 +53,7 @@
         $("#cleanrepeat").click(function () {
             layer.confirm('确认删除？', function (index) {
                 $.ajax({
-                    url: "/hadoop/fileAndFolder/delrepeat" ,
+                    url: "../fileAndFolder/delrepeat" ,
                     success: function (message) {
                         layer.close(index);
                         if(message.code==0)
@@ -80,7 +80,7 @@
         $("#cleangarbage").click(function () {
             layer.confirm('确认删除？', function (index) {
                 $.ajax({
-                    url: "/hadoop/fileAndFolder/delgarbage" ,
+                    url: "../fileAndFolder/delgarbage" ,
                     success: function (message) {
                         layer.close(index);
                         if(message.code==0)
@@ -107,7 +107,7 @@
         $("#cleanempty").click(function () {
             layer.confirm('确认删除？', function (index) {
                 $.ajax({
-                    url: "/hadoop/fileAndFolder/delempty" ,
+                    url: "../fileAndFolder/delempty" ,
                     success: function (message) {
                         layer.close(index);
                         if(message.code==0)

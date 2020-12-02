@@ -51,8 +51,8 @@
         <div class="layui-logo">layui 后台布局</div>
         <!-- 头部区域（可配合layui已有的水平导航） -->
         <ul class="layui-nav layui-layout-left">
-            <li class="layui-nav-item"><a href="/hadoop/index/mainindex">网盘</a></li>
-            <li class="layui-nav-item"><a href="/hadoop/fileAndFolder/searchpublicpage">找资源</a></li>
+            <li class="layui-nav-item"><a href="../index/mainindex">网盘</a></li>
+            <li class="layui-nav-item"><a href="../fileAndFolder/searchpublicpage">找资源</a></li>
         </ul>
         <ul class="layui-nav layui-layout-right">
             <li class="layui-nav-item">
@@ -61,11 +61,11 @@
                     [[${name}]]
                 </a>
                 <dl class="layui-nav-child">
-                    <dd><a data-url="/hadoop/index/mydetail" data-id="mydetail" data-title="修改基本资料" class="site-demo-active" href="javascript:;" data-type="tabAdd">基本资料</a></dd>
-                    <dd><a data-url="/hadoop/index/newpwd" data-id="newpassword" data-title="修改密码" class="site-demo-active" href="javascript:;" data-type="tabAdd">修改密码</a></dd>
+                    <dd><a data-url="../index/mydetail" data-id="mydetail" data-title="修改基本资料" class="site-demo-active" href="javascript:;" data-type="tabAdd">基本资料</a></dd>
+                    <dd><a data-url="../index/newpwd" data-id="newpassword" data-title="修改密码" class="site-demo-active" href="javascript:;" data-type="tabAdd">修改密码</a></dd>
                 </dl>
             </li>
-            <li class="layui-nav-item"><a href="/hadoop/user/loginout">退了</a></li>
+            <li class="layui-nav-item"><a href="../user/loginout">退了</a></li>
         </ul>
     </div>
 </div>
@@ -129,9 +129,9 @@
                 }
             }
             if (flag === 1) {
-                var originUrl = 'http://127.0.0.1:8000/hadoop/uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
+                var originUrl = '../uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
 
-                window.open('http://127.0.0.1:8012/onlinePreview?url=' + encodeURIComponent(originUrl));
+                window.open('../onlinePreview?url=' + encodeURIComponent(originUrl));
             } else {
                 layer.alert("该文件类型不允许预览");
             }
@@ -143,7 +143,7 @@
         fatherFolderid=folderid;
         var table=layui.table;
         table.reload('fileAndFolder',{
-            url:"/hadoop/groupfile/allFolder?fatherFolder="+ fatherFolderid
+            url:"../groupfile/allFolder?fatherFolder="+ fatherFolderid
         });
         guide.push(foldername);
         guideid.push(folderid);
@@ -185,12 +185,12 @@
         if(folder==0)
         {
             table.reload('fileAndFolder',{
-                url:"/hadoop/share/getsharedetail?shareUrl=[[${shareUrl}]]"
+                url:"../share/getsharedetail?shareUrl=[[${shareUrl}]]"
             });
         }else
         {
             table.reload('fileAndFolder',{
-                url:"/hadoop/groupfile/allFolder?fatherFolder="+ guideid[temp]
+                url:"../groupfile/allFolder?fatherFolder="+ guideid[temp]
             });
         }
 
@@ -222,7 +222,7 @@
                 console.log(flag);
                 $.ajax({
                     type: "POST",
-                    url:'http://localhost:8000/hadoop/share/shareverify?shareUrl=[[${shareUrl}]]&password='+password,
+                    url:'../share/shareverify?shareUrl=[[${shareUrl}]]&password='+password,
                     contentType: "application/json;charset=utf-8",
                     success: function (message) {
                         if (message.code === 0) {
@@ -239,7 +239,7 @@
                                 elem: '#demo'
                                 , id: 'fileAndFolder'
                                 , cellMinWidth: 80
-                                , url: '/hadoop/share/getsharedetail?shareUrl=[[${shareUrl}]]'
+                                , url: '../share/getsharedetail?shareUrl=[[${shareUrl}]]'
                                 , cols: [
                                     [
                                         {title: '选择', width: 36, type: 'checkbox', fixed: 'left'},
@@ -322,7 +322,7 @@
                         shade: 0.8,
                         offset: '30px',
                         area: ['80%', '60%'],
-                        content: "/hadoop/fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
+                        content: "../fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
                     });
                 } else {
                     layer.msg("请先选中！！", {
@@ -342,7 +342,7 @@
                         shade: 0.8,
                         offset: '30px',
                         area: ['80%', '60%'],
-                        content: "/hadoop/fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
+                        content: "../fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
                     });
 
                 }

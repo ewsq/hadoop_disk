@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <title>聊天记录</title>
 
-<link rel="stylesheet" href="/hadoop/static/layui-v2.2.5/css/layui.css">
-  <script type="text/javascript" src="/hadoop/static/js/jquery-1.11.1.js"></script>
+<link rel="stylesheet" href="../static/layui-v2.2.5/css/layui.css">
+  <script type="text/javascript" src="../static/js/jquery-1.11.1.js"></script>
 <style>
 body .layim-chat-main{height: auto;}
 </style>
@@ -38,7 +38,7 @@ body .layim-chat-main{height: auto;}
 -->
 
 
-<script src="/hadoop/static/layui-v2.2.5/layui.js"></script>
+<script src="../static/layui-v2.2.5/layui.js"></script>
 <script>
   function getQueryString(name) {
     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
@@ -63,7 +63,7 @@ body .layim-chat-main{height: auto;}
             ,laypage = layui.laypage;
 
     $.ajax({
-      url:' /hadoop/layim/getOldMsgs',
+      url:' ../layim/getOldMsgs',
       data:{pageNo:pageNo,pageSize:pageSize,toid:toid,type:type},
       async:false,
       success:function(data){
@@ -104,7 +104,7 @@ body .layim-chat-main{height: auto;}
           stop = false;
           $(".loading").show();//显示加载中提示
           $.ajax({
-            url:' /hadoop/layim/getOldMsgs',
+            url:' ../layim/getOldMsgs',
             data:{pageNo:pageNo,pageSize:pageSize,toid:toid,type:type},
             async:false,
             success:function(data){

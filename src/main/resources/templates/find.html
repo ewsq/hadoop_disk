@@ -95,7 +95,7 @@
             }
 
             $.ajax({
-                url:'http://localhost:8000/hadoop/layim/search',
+                url:'../layim/search',
                 dataType:'json',
                 data:{name:name},
                 async:false,
@@ -182,7 +182,7 @@
                 var uid = $($(_obj).parent().parent().parent()).attr('id');
 
                 $.ajax({
-                    url:'http://localhost:8000/hadoop/friendAndGroup/addapply',
+                    url:'../friendAndGroup/addapply',
                     data:{'toid':uid,'type':'friend',"message":remark},
                     success:function(data){
                         //console.log(data);
@@ -222,7 +222,7 @@
             , avatar: avatar
             , submit: function (group, remark, index) {
                 $.ajax({
-                    url:'http://localhost:8000/hadoop/friendAndGroup/addapply',
+                    url:'../friendAndGroup/addapply',
                     data:{'toid':group_id,'type':'group',"message":remark},
                     success:function(data){
                     //console.log(data);

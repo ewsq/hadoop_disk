@@ -101,7 +101,7 @@ public class UploadAndController {
                 map.put("code",0);
                 map.put("msg","");
                 map.put("data",map2);
-                map2.put("src","/hadoop/yunpansysimg/"+uuid+"." + prefix);
+                map2.put("src","../yunpansysimg/"+uuid+"." + prefix);
                 return map;
             }
         }catch (Exception e){

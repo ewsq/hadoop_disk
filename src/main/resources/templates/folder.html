@@ -17,7 +17,7 @@ function getdata() {
     var $=layui.jquery;
     var data = [];
     $.ajax({
-        url: "/hadoop/fileAndFolder/treeload",    //后台数据请求地址
+        url: "../fileAndFolder/treeload",    //后台数据请求地址
         type: "post",
         datatype:"json",
         async: false,
@@ -51,7 +51,7 @@ return data;
                 layer.confirm(confirmMess, function (index) {
                     $.ajax({
                         type: "POST",
-                        url: "/hadoop/fileAndFolder/copyormove?altertype="+altertype+"&folderid=[[${folderid}]]&type="+type+"&aimFolderid="+item.id,
+                        url: "../fileAndFolder/copyormove?altertype="+altertype+"&folderid=[[${folderid}]]&type="+type+"&aimFolderid="+item.id,
                         contentType: "application/json;charset=utf-8",
                         success: function (message) {
                             // 获得frame索引

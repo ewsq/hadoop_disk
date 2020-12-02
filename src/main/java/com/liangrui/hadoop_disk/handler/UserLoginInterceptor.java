@@ -57,7 +57,7 @@ public class UserLoginInterceptor implements HandlerInterceptor {
 
 			//直接重定向到登录页面
 
-			response.sendRedirect("/hadoop/index/login");
+			response.sendRedirect("index/login");
 
 			return false;
 

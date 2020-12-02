@@ -166,7 +166,7 @@ public class ShareServiceImpl implements ShareService {
             } else {
                 myShareModel.setSharetime("永久有效");
             }
-            myShareModel.setShareurl("http://localhost:8000/hadoop/share/s?shareUrl="+sharefile.getShareurl());
+            myShareModel.setShareurl("../share/s?shareUrl="+sharefile.getShareurl());
             if (sharefile.getStatue() == null) {
                 myShareModel.setViewshareNumber(0);
             } else {

@@ -64,7 +64,7 @@
         };
         element.init();
         //多文件列表示例
-        const uoloadUrl = "/hadoop/uploadAndDown/upload?fatherFolderid=[[${fatherFolderid}]]";
+        const uoloadUrl = "../uploadAndDown/upload?fatherFolderid=[[${fatherFolderid}]]";
         const demoListView = $('#demoList')
             , uploadListIns = upload.render({
             elem: '#testList'
@@ -141,7 +141,7 @@
             elem : "#addFile",
             auto : false,   //关闭文件自动上传
             bindAction : "#upload", //文件上传触发按钮
-            url :  "/hadoop/uploadAndDown/upload?fatherFolderid=[[${fatherFolderid}]]",
+            url :  "../uploadAndDown/upload?fatherFolderid=[[${fatherFolderid}]]",
             progress:function(value){//上传进度回调 value进度值
                 element.progress('uploadProgressBar', value+'%')//设置页面进度条
             },

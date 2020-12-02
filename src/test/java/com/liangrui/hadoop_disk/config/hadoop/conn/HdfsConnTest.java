@@ -1,7 +1,7 @@
-package com.liangrui.hadoop_disk.hadoop_disk.util;
+package com.liangrui.hadoop_disk.config.hadoop.conn;
 
 
-import com.liangrui.hadoop_disk.config.hadoop.conn.HdfsConn;
+import com.liangrui.hadoop_disk.config.hadoop.HdfsConn;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.*;
 import org.junit.Test;
@@ -13,18 +13,22 @@ import java.net.URISyntaxException;
 /**
  * Unit test for simple App.
  */
-public class AppTest
+public class HdfsConnTest
 {
+    // wsq 亲试可行
+
+    private String defaultFS="hdfs://hbmaster:9000";
+
     @Test
     /**
      *   HDFS获取文件系统
      */
     public void initHDFS() throws Exception{
-// 1 创建配置信息对象
+        // 1 创建配置信息对象
         Configuration configuration = new Configuration();
-// 2 获取文件系统
+        // 2 获取文件系统
         FileSystem fs = FileSystem.get(configuration);
-// 3 打印文件系统
+        // 3 打印文件系统
         System.out.println(fs.toString());
     }
     @Test
@@ -36,7 +40,7 @@ public class AppTest
         //configuration.set("dfs.replication","2");
         FileSystem fs = HdfsConn.getFileSystem();
         //2 上传文件
-        fs.copyFromLocalFile(new Path("F:\\java 工具64位.zip"),new Path("/java 工具64位.zip"));
+        fs.copyFromLocalFile(new Path("D:\\tmp\\IMG_20140911_124214.jpg"),new Path("/tmp/IMG_20140911_124214.jpg"));
         //3 关闭资源
         fs.close();
         System.out.println("over");
@@ -49,13 +53,13 @@ public class AppTest
     public void testCopyToLocalFile() throws URISyntaxException, IOException, InterruptedException {
         // 1 获取文件系统
         Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"12493");
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"12493");
         // 2 执行下载操作
         //boolean delSrc 指是否将原文件删除
         //Path src 指要下载的文件路径
         //Path dst 指将文件下载到的路径
         //boolean useRawLocalFileSystem 是否开启文件校验
-        fs.copyToLocalFile(false,new Path("/java 工具64位.zip"),new Path("D:/java 工具64位.zip"),true);
+        fs.copyToLocalFile(false,new Path("/tmp/IMG_20140911_124214.jpg"),new Path("D:/temp/IMG_20140911_124214.jpg"),true);
         //3 关闭资源
         fs.close();
         System.out.println("over");
@@ -67,28 +71,13 @@ public class AppTest
     public void  testMkdir() throws URISyntaxException, IOException, InterruptedException {
         //1.获取文件系统
         Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"12493");
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"12493");
         //2.创建目录
         fs.mkdirs(new Path("/0906/zhangsan"));
         //3.关闭资源
         fs.close();
     }
 
-    /**
-     * HDFS文件的删除
-     * @throws IOException
-     */
-    @Test
-    public void testDelete() throws IOException, URISyntaxException, InterruptedException {
-        //1.获取文件系统
-        Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"12493");
-
-        //2.执行删除
-        fs.delete(new Path("/ava 工具64位.zip"),true);
-        //3.关闭资源
-        fs.close();
-    }
 
     /**
      * HDFS 文件名的修改
@@ -100,17 +89,34 @@ public class AppTest
     public void testRename() throws URISyntaxException, IOException, InterruptedException {
         //1 获取文件系统
         Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"root");
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"root");
         //2 修改文件名称
-        fs.rename(new Path("/hello11.txt"),new Path("/Im.txt"));
+        fs.rename(new Path("/tmp/IMG_20140911_124214.jpg"),new Path("/tmp/4214.jpg"));
         //3. 关闭资源
         fs.close();
     }
+
+    /**
+     * HDFS文件的删除
+     * @throws IOException
+     */
+    @Test
+    public void testDelete() throws IOException, URISyntaxException, InterruptedException {
+        //1.获取文件系统
+        Configuration configuration = new Configuration();
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"12493");
+
+        //2.执行删除
+        fs.delete(new Path("/tmp/4214.jpg"),true);
+        //3.关闭资源
+        fs.close();
+    }
+
     @Test
     public void testListFiles() throws URISyntaxException, IOException, InterruptedException {
         //1 获取文件系统
         Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"12493");
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"12493");
         //2 获取文件详情
         /**
          * 思考:为什么返回迭代器不是list之类的容器
@@ -154,7 +160,7 @@ public class AppTest
     public void testListStatus() throws URISyntaxException, IOException, InterruptedException {
         //1 获取文件配置信息
         Configuration configuration = new Configuration();
-        FileSystem fs = FileSystem.get(new URI("hdfs://localhost:9000"),configuration,"root");
+        FileSystem fs = FileSystem.get(new URI(defaultFS),configuration,"root");
         //2 判断是文件还是文件夹
         FileStatus[] listStatus = fs.listStatus(new Path("/"));
 

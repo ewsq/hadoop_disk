@@ -51,7 +51,7 @@
             elem: '#demo'
             , id: 'fileAndFolder'
             , cellMinWidth: 80
-            , url: '/hadoop/share/myshare'
+            , url: '../share/myshare'
             , cols: [
                 [
                     {title: '选择', width: 36, type: 'checkbox', fixed: 'left'},
@@ -74,7 +74,7 @@
                 layer.confirm('确认删除？', function (index) {
 
                     $.ajax({
-                        url: "/hadoop/share/delete?id=" + data.id ,
+                        url: "../share/delete?id=" + data.id ,
                         success: function (message) {
                             layer.close(index);
                             layui.table.reload('fileAndFolder');
@@ -107,7 +107,7 @@
             if (data.length > 0) {
                 layer.confirm('确认删除？', function (index) {
                     $.ajax({
-                        url: "/hadoop/share/deleteall",
+                        url: "../share/deleteall",
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {

@@ -1,10 +1,8 @@
 package com.liangrui.hadoop_disk.util;
 
-import com.liangrui.hadoop_disk.config.hadoop.conn.HbaseConn;
-import org.apache.hadoop.conf.Configuration;
+import com.liangrui.hadoop_disk.config.hbase.HbaseConn;
 import org.apache.hadoop.hbase.Cell;
 import org.apache.hadoop.hbase.CellUtil;
-import org.apache.hadoop.hbase.HBaseConfiguration;
 import org.apache.hadoop.hbase.TableName;
 import org.apache.hadoop.hbase.client.*;
 import org.apache.hadoop.hbase.util.Bytes;
@@ -38,8 +36,9 @@ public class HbaseUtil {
             put.addColumn(Bytes.toBytes(colName), Bytes.toBytes(rowKey), Bytes.toBytes(val));
             table.put(put);
         } finally {
-            if (table != null)
+            if (table != null) {
                 table.close();
+            }
         }
     }
     /**
@@ -60,8 +59,9 @@ public class HbaseUtil {
                 returnMap.put(Bytes.toString(CellUtil.cloneQualifier(cell)), Bytes.toString(CellUtil.cloneValue(cell)));
             }
         } finally {
-            if (table != null)
+            if (table != null) {
                 table.close();
+            }
         }
         return returnMap.get(rowkey)==null?null:returnMap.get(rowkey).toString();
     }

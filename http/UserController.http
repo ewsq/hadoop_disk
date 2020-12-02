@@ -1,0 +1,21 @@
+### 登录
+GET http://{{host}}../user/login
+Content-Type: application/json
+
+{
+  "name": "wsq",
+  "password": "123456"
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

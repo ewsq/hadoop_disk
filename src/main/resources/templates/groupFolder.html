@@ -17,7 +17,7 @@
         var data = [];
         var $=layui.jquery;
         $.ajax({
-            url: "http://localhost:8000/hadoop/share/treeload?groupid="+groupid,    //后台数据请求地址
+            url: "../share/treeload?groupid="+groupid,    //后台数据请求地址
             type: "post",
             datatype:"json",
             async: false,
@@ -49,7 +49,7 @@
 
                 layer.confirm(confirmMess, function (index) {
                     $.ajax({
-                        url: "http://localhost:8000/hadoop/share/shareingroup",
+                        url: "../share/shareingroup",
                         contentType: "application/json;charset=utf-8",
                         data:{"objects":JSON.stringify(parent_json),"aimFolderid":item.id,"groupid":JSON.stringify(groupid)},
                         success: function (message) {

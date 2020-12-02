@@ -51,7 +51,7 @@
             elem: '#demo'
             , id: 'fileAndFolder'
             , cellMinWidth: 80
-            , url: '/hadoop/fileAndFolder/findrecyclefile'
+            , url: '../fileAndFolder/findrecyclefile'
             , cols: [
                 [
                     {title: '选择', width: 36, type: 'checkbox', fixed: 'left'},
@@ -111,7 +111,7 @@
                 layer.confirm('确认删除？', function (index) {
 
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/delrecycle?fileid=" + data.id + "&type=" + data.type,
+                        url: "../fileAndFolder/delrecycle?fileid=" + data.id + "&type=" + data.type,
                         success: function (message) {
                             layer.close(index);
                             layui.table.reload('fileAndFolder');
@@ -129,7 +129,7 @@
                 console.log(data);
                 layer.confirm('确认还原文件？', function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/recycle" ,
+                        url: "../fileAndFolder/recycle" ,
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {
@@ -162,7 +162,7 @@
             if (data.length > 0) {
                 layer.confirm('确认删除？', function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/delrecycleall",
+                        url: "../fileAndFolder/delrecycleall",
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {
@@ -192,7 +192,7 @@
             if (data.length > 0) {
                 layer.confirm('确认还原？', function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/recycleall",
+                        url: "../fileAndFolder/recycleall",
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {

@@ -79,9 +79,9 @@
                 }
             }
             if (flag === 1) {
-                var originUrl = 'http://127.0.0.1:8000/hadoop/uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
+                var originUrl = '../uploadAndDown/down?fileindexid=' + fileindexid + '&fullfilename=' + filename;
 
-                window.open('http://127.0.0.1:8012/onlinePreview?url=' + encodeURIComponent(originUrl));
+                window.open('../onlinePreview?url=' + encodeURIComponent(originUrl));
             } else {
                 layer.alert("该文件类型不允许预览");
             }
@@ -92,7 +92,7 @@
     function changeFileStatus(sharetype, fileid, type) {
         var $ = layui.jquery;
         $.ajax({
-            url: "/hadoop/fileAndFolder/changefileStaus?sharetype=" + sharetype + "&folderid=" + fileid + "&type=" + type,
+            url: "../fileAndFolder/changefileStaus?sharetype=" + sharetype + "&folderid=" + fileid + "&type=" + type,
             method: "post",
             beforeSend: function () {
                 $("#icon_loading").html("<span class='layui-icon layui-icon-loading'></span>");
@@ -123,7 +123,7 @@
             elem: '#demo'
             , id: 'fileAndFolder'
             , cellMinWidth: 80
-            , url: '/hadoop/fileAndFolder/allFolder?fatherFolder=' + [[${fatherFolderid}]]
+            , url: '../fileAndFolder/allFolder?fatherFolder=' + [[${fatherFolderid}]]
             , cols: [
                 [
                     {title: '选择', width: 36, type: 'checkbox', fixed: 'left'},
@@ -160,7 +160,7 @@
                     , {
                     field: 'name', title: '文件名', sort: true, templet: function (row) {
                         if (row.type === 0) {
-                            return "<a onclick='top.addtap(\"/hadoop/fileAndFolder/allFile?fatherFolderid=" + row.id + "\",\"" + row.id.toString() + "\",\"" + row.name + "\")'>" + row.name + "</a>";
+                            return "<a onclick='top.addtap(\"../fileAndFolder/allFile?fatherFolderid=" + row.id + "\",\"" + row.id.toString() + "\",\"" + row.name + "\")'>" + row.name + "</a>";
                         } else {
                             return "<a onclick='preview(" + row.id + ",\"" + row.filetype + "\"," + row.size + ",\"" + row.name + "\")'>" + row.name + "</a>";
                         }
@@ -204,7 +204,7 @@
                                 }, function (value, index) {
                                     $.ajax({
                                         type: "POST",
-                                        url: "/hadoop/fileAndFolder/renameFolder?filename=" + value + "&folderid=" + data.id + "&type=" + data.type,
+                                        url: "../fileAndFolder/renameFolder?filename=" + value + "&folderid=" + data.id + "&type=" + data.type,
                                         contentType: "application/json;charset=utf-8",
                                         success: function (message) {
                                             // 获得frame索引
@@ -233,7 +233,7 @@
                                 layer.confirm('确认删除？', function (index) {
                                     console.log(data.id);
                                     $.ajax({
-                                        url: "/hadoop/fileAndFolder/delFolder?folderid=" + data.id + "&type=" + data.type,
+                                        url: "../fileAndFolder/delFolder?folderid=" + data.id + "&type=" + data.type,
                                         success: function (message) {
                                             layer.close(index);
                                             layui.table.reload('fileAndFolder');
@@ -262,7 +262,7 @@
                                     shade: 0.8,
                                     offset: '30px',
                                     area: ['80%', '60%'],
-                                    content: "/hadoop/fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
+                                    content: "../fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=0"//iframe的url
                                 });
 
                             }
@@ -279,7 +279,7 @@
                                     shade: 0.8,
                                     offset: '30px',
                                     area: ['80%', '60%'],
-                                    content: "/hadoop/fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=1"//iframe的url
+                                    content: "../fileAndFolder/onlyfolder?folderid=" + data.id + "&type=" + data.type + "&altertype=1"//iframe的url
                                 });
 
                             }
@@ -298,7 +298,7 @@
             //console.log(obj)
 
             if (obj.event === 'down') {
-                var url = "http://127.0.0.1:8000/hadoop/uploadAndDown/down?fileindexid=" + data.id;//下载文件url
+                var url = "../uploadAndDown/down?fileindexid=" + data.id;//下载文件url
                 $("#fileForm").attr('action', url);
 
                 $("#fileForm").submit();
@@ -313,7 +313,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/share/sharePage" //iframe的url
+                    content: "../share/sharePage" //iframe的url
                 });
 
             }
@@ -346,7 +346,7 @@
                 //console.log(fatherFolderid+value);
                 $.ajax({
                     type: "POST",
-                    url: "/hadoop/fileAndFolder/addFolder?filename=" + value + "&fatherFolderid=[[${fatherFolderid}]]",
+                    url: "../fileAndFolder/addFolder?filename=" + value + "&fatherFolderid=[[${fatherFolderid}]]",
                     contentType: "application/json;charset=utf-8",
                     success: function (message) {
                         // 获得frame索引
@@ -380,7 +380,7 @@
                 shade: 0.8,
                 offset: '30px',
                 area: ['85%', '69%'],
-                content: "/hadoop/uploadAndDown/uploadIndex?fatherFolderid=[[${fatherFolderid}]]" //iframe的url
+                content: "../uploadAndDown/uploadIndex?fatherFolderid=[[${fatherFolderid}]]" //iframe的url
             });
         });
         $("#share").click(function () {
@@ -395,7 +395,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/share/sharePage" //iframe的url
+                    content: "../share/sharePage" //iframe的url
                 });
             } else {
                 layer.msg("请先选中！！", {
@@ -410,7 +410,7 @@
             if (data.length > 0) {
                 layer.confirm('确认删除？', function (index) {
                     $.ajax({
-                        url: "/hadoop/fileAndFolder/delall",
+                        url: "../fileAndFolder/delall",
                         contentType: "application/json;charset=utf-8",
                         data: {"objects": JSON.stringify(data)},
                         success: function (message) {
@@ -446,7 +446,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
+                    content: "../fileAndFolder/onlyfolderlist?altertype=0"//iframe的url
                 });
             } else {
                 layer.msg("请先选中！！", {
@@ -467,7 +467,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['80%', '60%'],
-                    content: "/hadoop/fileAndFolder/onlyfolderlist?altertype=1"//iframe的url
+                    content: "../fileAndFolder/onlyfolderlist?altertype=1"//iframe的url
                 });
             } else {
                 layer.msg("请先选中！！", {
@@ -479,7 +479,7 @@
         $("#search").click(function () {
             var text = $("#seaarchtxt").val();
             console.log(text);
-            top.addtap("/hadoop/fileAndFolder/searchpage?name=" + text, -1, "我的搜索");
+            top.addtap("../fileAndFolder/searchpage?name=" + text, -1, "我的搜索");
             //这里以搜索为例
         });
     });

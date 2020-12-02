@@ -142,7 +142,7 @@
         //监听提交
         form.on('submit(add)', function (data) {
             $.ajax({
-                url: "/hadoop/share/addShareUrl",
+                url: "../share/addShareUrl",
                 contentType: "application/json;charset=utf-8",
                 data: {"objects":JSON.stringify(objects),"objects2":JSON.stringify(data.field)},
                 dataType: "json",
@@ -172,7 +172,7 @@
             id: 'mygroup'
             , elem: '#demo2'
             , title: "群组表"
-            , url: 'http://localhost:8000/hadoop/friendAndGroup/findallResgroup' //数据接口
+            , url: '../friendAndGroup/findallResgroup' //数据接口
             , cols: [
                 [ //表头
                     {field: 'name', title: '群组名',align: 'center',templet: function (row) {
@@ -196,7 +196,7 @@
                     shade: 0.8,
                     offset: '30px',
                     area: ['95%', '95%'],
-                    content: "http://localhost:8000/hadoop/share/groupfolder?groupid="+data.groupid//iframe的url
+                    content: "../share/groupfolder?groupid="+data.groupid//iframe的url
                 });
             }
         });

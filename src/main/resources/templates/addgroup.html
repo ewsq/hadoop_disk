@@ -65,7 +65,7 @@
         //普通图片上传
         var uploadInst = upload.render({
             elem: '#test1'
-            ,url: 'http://localhost:8000/hadoop/uploadAndDown/uploadImg'
+            ,url: '../uploadAndDown/uploadImg'
             ,accept:'images'
             ,size:500000
             ,before: function(obj){
@@ -116,9 +116,9 @@
             console.log(flag);
             var maintenanceurl;
             if(flag===0)
-                maintenanceurl='http://localhost:8000/hadoop/friendAndGroup/addgroup';
+                maintenanceurl='../friendAndGroup/addgroup';
             else
-                maintenanceurl='http://localhost:8000/hadoop/friendAndGroup/updategroup?groupid='+[[${resgroup.getGroupid()}]];
+                maintenanceurl='../friendAndGroup/updategroup?groupid='+[[${resgroup.getGroupid()}]];
             $.ajax({
                 type: "POST",
                 url: maintenanceurl,

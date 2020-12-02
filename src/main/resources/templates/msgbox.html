@@ -88,7 +88,7 @@ layui.use(['layim', 'flow'], function(){
     //实际部署时，请将下述 getmsg.json 改为你的接口地址
 
       $.ajax({
-          url:'http://localhost:8000/hadoop/layim/getmsgbox',
+          url:'../layim/getmsgbox',
           success:function(res){
               console.log(res);
               if(res.code != 0){
@@ -142,7 +142,7 @@ layui.use(['layim', 'flow'], function(){
         ,submit: function(group, index){
 
           //实际部署时，请开启下述注释，并改成你的接口地址
-          $.post('http://localhost:8000/hadoop/friendAndGroup/addOrRejectFridend', {
+          $.post('../friendAndGroup/addOrRejectFridend', {
              id:id, type:1
           }, function(res){
         	  //console.log(res.code);
@@ -175,7 +175,7 @@ layui.use(['layim', 'flow'], function(){
       ,id = li.data('id');
           layer.confirm('确定拒绝吗？', function(index){
 
-              $.post('http://localhost:8000/hadoop/friendAndGroup/addOrRejectFridend', {
+              $.post('../friendAndGroup/addOrRejectFridend', {
                   id:id,type:0
               }, function(res){
                   //console.log(res);
@@ -194,7 +194,7 @@ layui.use(['layim', 'flow'], function(){
               ,from_group = li.data("fromgroup");
 
           layer.confirm('确定同意吗？', function(index){
-              $.post('http://localhost:8000/hadoop/friendAndGroup/addOrRejectGroup',{id:id, type:1},function(data){
+              $.post('../friendAndGroup/addOrRejectGroup',{id:id, type:1},function(data){
                   //console.log(data);
                   if(data.code ==0){
                       othis.parent().html('<em>已同意</em>');
@@ -213,7 +213,7 @@ layui.use(['layim', 'flow'], function(){
               ,id = li.data('id');
           layer.confirm('确定拒绝吗？', function(index){
 
-              $.post('http://localhost:8000/hadoop/friendAndGroup/addOrRejectGroup', {
+              $.post('../friendAndGroup/addOrRejectGroup', {
                   id:id, type:0
               }, function(res){
                   //console.log(res);

@@ -1,14 +1,11 @@
-package com.liangrui.hadoop_disk;
+package com.liangrui.hadoop_disk.config.hadoop.conn;
 
-import com.liangrui.hadoop_disk.config.hadoop.conn.HbaseConn;
 import com.liangrui.hadoop_disk.util.*;
-import org.apache.hadoop.hbase.client.Connection;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.util.Calendar;
 
-public class test {
+public class HbaseConnTest {
     @Test
     public void testdate()
     {

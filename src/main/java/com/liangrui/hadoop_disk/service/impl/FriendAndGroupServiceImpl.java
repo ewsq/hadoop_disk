@@ -248,7 +248,7 @@ public class FriendAndGroupServiceImpl implements FriendAndGroupService {
     @Transactional(rollbackFor = {RuntimeException.class, Error.class})
     public int creategroup(Resgroup resgroup) {
         if(resgroup.getImgpath()==null)
-            resgroup.setImgpath("/hadoop/static/images/dfdg.jpg");
+            resgroup.setImgpath("../static/images/dfdg.jpg");
         String time=DateUtil.DateToString("yyyy-MM-dd HH:mm:ss",new Date());
         resgroup.setCreatetime(time);
         resgroup.setRootfolder(new RowkeyUtil().getRowkey());

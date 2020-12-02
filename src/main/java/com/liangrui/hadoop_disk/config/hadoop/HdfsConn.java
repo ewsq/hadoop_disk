@@ -1,4 +1,4 @@
-package com.liangrui.hadoop_disk.config.hadoop.conn;
+package com.liangrui.hadoop_disk.config.hadoop;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -16,7 +16,7 @@ public class HdfsConn {
 	private HdfsConn() {
 		try {
 			configuration = new Configuration();
-			configuration.set("fs.defaultFS", "hdfs://localhost:9000/");
+			configuration.set("fs.defaultFS", "hdfs://hbmaster:9000/");
 			fileSystem = FileSystem.get(configuration);
 		} catch (IOException e) {
 			e.printStackTrace();

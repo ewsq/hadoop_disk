@@ -7,6 +7,21 @@
     <title>登录</title>
     <link rel="stylesheet" href="../static/layui-v2.2.5/css/layui.css" media="all"/>
     <link rel="stylesheet" href="../static/css/login.css"/>
+    <script>
+        //获取当前窗口的Url
+        var url = window.location.href;
+        console.log('url:'+url);
+        //结果：http://localhost:61768/Home/Index?id=2&age=18
+        //获取当前窗口的主机名
+        var host = window.location.host;
+        console.log('host:'+host);
+        //结果：localhost:61768
+
+        var ip=url.substring(0,url.lastIndexOf('/'));
+        ip=ip.replace('http://','').replace('index','');
+        console.log('ip:'+ip);
+
+    </script>
 </head>
 
 <body class="beg-login-bg">
@@ -37,10 +52,10 @@
 
                 <div class="layui-form-item">
                     <div class="beg-pull-left beg-login-remember">
-                        <a href="/hadoop/index/forgetpassword"><label style="color: whitesmoke;">忘记密码？</label> </a>
+                        <a href="../index/forgetpassword"><label style="color: whitesmoke;">忘记密码？</label> </a>
                     </div>
                     <div class="beg-pull-left beg-login-remember">
-                        <a href="/hadoop/index/register" ><label style="color: whitesmoke;"> 注册</label> </a>
+                        <a href="../index/register" ><label style="color: whitesmoke;"> 注册</label> </a>
                     </div>
                     <div class="beg-pull-right">
                         <button class="layui-btn layui-btn-primary" lay-submit lay-filter="login" id="loginbtn">
@@ -83,7 +98,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: 'http://localhost:8000/hadoop/user/login',
+                    url: '../user/login',
                     contentType: "application/json;charset=utf-8",
                     data: JSON.stringify(data.field),
                     dataType: "json",
@@ -96,7 +111,7 @@
                             });
                         } else {
                             layer.msg('登入成功', {offset: '15px', icon: 1, time: 1000}, function () {
-                                location.href = "/hadoop/index/mainindex"; //后台主页
+                                location.href = "../index/mainindex"; //后台主页
                             });
                         }
                     }

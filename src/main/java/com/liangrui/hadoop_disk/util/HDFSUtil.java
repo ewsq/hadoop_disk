@@ -1,19 +1,12 @@
 package com.liangrui.hadoop_disk.util;
 
-import java.io.BufferedInputStream;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URI;
 
-import com.liangrui.hadoop_disk.config.hadoop.conn.HdfsConn;
-import org.apache.commons.io.FileUtils;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.FSDataOutputStream;
+import com.liangrui.hadoop_disk.config.hadoop.HdfsConn;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
-import org.apache.hadoop.io.IOUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 public class HDFSUtil {

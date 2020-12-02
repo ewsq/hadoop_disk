@@ -590,7 +590,7 @@
                 area: ["1000px", "520px"],
                 skin: "layui-box layui-layer-border",
                 resize: !1,
-                content: "/hadoop/index/moreMenu"
+                content: "../index/moreMenu"
             })
         }, setSkin: function (i) {
             var a = i.attr("src"), e = layui.data("layim")[j.mine.id] || {};
@@ -694,7 +694,7 @@
                 area: ["1000px", "520px"],
                 skin: "layui-box layui-layer-border",
                 resize: !1,
-                content: "/hadoop/groupfile/index?groupid="+JSON.stringify(i.data("id"))
+                content: "../groupfile/index?groupid="+JSON.stringify(i.data("id"))
             });
 
         }

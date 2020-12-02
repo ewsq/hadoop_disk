@@ -59,7 +59,7 @@ public class shareController {
         shareService.addShare(list,sharefile);
         data.put("code", 0);
         data.put("msg", "添加完成");
-        data.put("shareurl","http://localhost:8000/hadoop/share/s?shareUrl="+rowkey);
+        data.put("shareurl","../share/s?shareUrl="+rowkey);
         data.put("password",sharefile.getPassword());
         return data;
     }
